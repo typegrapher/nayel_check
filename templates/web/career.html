@@ -1,0 +1,288 @@
+{% extends 'web/base.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+    {% comment %} base {% endcomment %}
+</head>
+
+<body class="custom-cursor">
+
+
+
+
+
+    <div class="page-wrapper">
+        {% comment %} header {% endcomment %}
+
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg"
+                style="background-image: url(/static/web/images/backgrounds/page-header-bg.jpg)">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="{% url 'web:index' %}">Home</a></li>
+                        <li><span>/</span></li>
+                        <li>Career</li>
+                    </ul>
+                    <h2>Our Career</h2>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Testimonials Page Start-->
+        <section class="testimonials-page">
+            <div class="container ">
+                <div class="row">
+                    {% comment %} {% for career in career %}
+                    <!--Testimonial One Single Start-->
+                    <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__client-info">
+                                <div class="testimonial-one__client-img-box">
+                                    <div class="testimonial-one__client-img">
+                                        <img src="{{career.image.url}}" alt="" height="85px" width="85px">
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__client-details">
+                                    <h4 class="testimonial-one__client-name">{{career.career}}</h4>
+                                    <p class="testimonial-one__client-sub-title">{{career.teacher}}</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-one__text">{{career.detials}}</p>
+
+                            <div class="testimonial-one__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="main-menu__btn-box">
+                                <a href="{% url 'web:career_apply' %}" class="thm-btn_apply_now main-menu__btn"> <i class="fa fa-arrow-right"></i>apply now</a>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                    {% endfor %} {% endcomment %}
+                      {% for career in career %}
+                    <!--Testimonial One Single End-->
+                    <div class="col-xl-5 col-lg-5 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="blog-one__single">
+                            <div class="blog-one__img">
+                                <img class="blog-one__image_lamiiz" src="{{career.image.url}}" alt="">
+                            </div>
+                            <div class="blog-one__content">
+                                <h3 class="blog-one__title"><a href="#">{{career.career}}</a></h3>
+                                <p class="blog-one__text">{{career.Introduction|truncatechars:150|safe}}</p>
+                                <div class="blog-one__read-more">
+                                    <a href="{% url 'web:career_apply' career.id %}#careerApplye" class="thm-btn_apply_now main-menu__btn"> <i class="fa fa-arrow-right"></i>apply now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      {% endfor %}
+                      <style>
+                        .blog-one__img .blog-one__image_lamiiz {
+                            height: 20rem;
+                          }
+                      </style>
+                    <!--Testimonial One Single Start-->
+                    {% comment %}
+                    <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__client-info">
+                                <div class="testimonial-one__client-img-box">
+                                    <div class="testimonial-one__client-img">
+                                        <img src="/static/web/images/testimonial/testimonial-1-2.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__client-details">
+                                    <h4 class="testimonial-one__client-name">David Cooper</h4>
+                                    <p class="testimonial-one__client-sub-title">CEO - Co Founder</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-one__text">Exercitation ullamco laboris nisi ut aliquip ex ea ex
+                                commodo consequat duis aute aboris nisi ut aliquip irure reprehederit in voluptate velit
+                                esse .</p>
+                            <div class="testimonial-one__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="main-menu__btn-box">
+                                <a href="#" class="thm-btn_apply_now main-menu__btn"> <i class="fa fa-arrow-right"></i>
+                                    apply now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Testimonial One Single End-->
+                    <!--Testimonial One Single Start-->
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__client-info">
+                                <div class="testimonial-one__client-img-box">
+                                    <div class="testimonial-one__client-img">
+                                        <img src="/static/web/images/testimonial/testimonial-1-3.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__client-details">
+                                    <h4 class="testimonial-one__client-name">Mike Hardson</h4>
+                                    <p class="testimonial-one__client-sub-title">CEO - Co Founder</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-one__text">Exercitation ullamco laboris nisi ut aliquip ex ea ex
+                                commodo consequat duis aute aboris nisi ut aliquip irure reprehederit in voluptate velit
+                                esse .</p>
+                            <div class="testimonial-one__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="main-menu__btn-box">
+                                <a href="#" class="thm-btn_apply_now main-menu__btn"> <i class="fa fa-arrow-right"></i>
+                                    apply now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Testimonial One Single End-->
+                    <!--Testimonial One Single Start-->
+                    <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__client-info">
+                                <div class="testimonial-one__client-img-box">
+                                    <div class="testimonial-one__client-img">
+                                        <img src="/static/web/images/testimonial/testimonial-1-5.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__client-details">
+                                    <h4 class="testimonial-one__client-name">Sarah Albert</h4>
+                                    <p class="testimonial-one__client-sub-title">CEO - Co Founder</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-one__text">Exercitation ullamco laboris nisi ut aliquip ex ea ex
+                                commodo consequat duis aute aboris nisi ut aliquip irure reprehederit in voluptate velit
+                                esse .</p>
+                            <div class="testimonial-one__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="main-menu__btn-box">
+                                <a href="#" class="thm-btn_apply_now main-menu__btn"> <i class="fa fa-arrow-right"></i>
+                                    apply now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Testimonial One Single End-->
+                    <!--Testimonial One Single Start-->
+                    <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__client-info">
+                                <div class="testimonial-one__client-img-box">
+                                    <div class="testimonial-one__client-img">
+                                        <img src="/static/web/images/testimonial/testimonial-1-6.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__client-details">
+                                    <h4 class="testimonial-one__client-name">Mona Lisa</h4>
+                                    <p class="testimonial-one__client-sub-title">CEO - Co Founder</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-one__text">Exercitation ullamco laboris nisi ut aliquip ex ea ex
+                                commodo consequat duis aute aboris nisi ut aliquip irure reprehederit in voluptate velit
+                                esse .</p>
+                            <div class="testimonial-one__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="main-menu__btn-box">
+                                <a href="#" class="thm-btn_apply_now main-menu__btn"> <i class="fa fa-arrow-right"></i>
+                                    apply now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Testimonial One Single End-->
+                    <!--Testimonial One Single Start-->
+                    <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="600ms">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__client-info">
+                                <div class="testimonial-one__client-img-box">
+                                    <div class="testimonial-one__client-img">
+                                        <img src="/static/web/images/testimonial/testimonial-1-4.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__client-details">
+                                    <h4 class="testimonial-one__client-name">John Smith</h4>
+                                    <p class="testimonial-one__client-sub-title">CEO - Co Founder</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-one__text">Exercitation ullamco laboris nisi ut aliquip ex ea ex
+                                commodo consequat duis aute aboris nisi ut aliquip irure reprehederit in voluptate velit
+                                esse .</p>
+                            <div class="testimonial-one__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="main-menu__btn-box">
+                                <a href="#" class="thm-btn_apply_now main-menu__btn"> <i class="fa fa-arrow-right"></i>
+                                    apply now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endcomment %}
+                    <!--Testimonial One Single End-->
+                </div>
+            </div>
+        </section>
+        <!--Testimonials Page End-->
+
+        <!--Site Footer Start-->
+
+        <!--Site Footer End-->
+
+
+    </div><!-- /.page-wrapper -->
+
+
+
+    <!-- /.mobile-nav__wrapper -->
+
+   
+    <!-- /.search-popup -->
+
+
+
+
+    {% comment %} footer {% endcomment %}
+</body>
+
+</html>
+
+{% endblock %}

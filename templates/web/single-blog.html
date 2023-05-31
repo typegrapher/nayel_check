@@ -1,0 +1,99 @@
+{% extends 'web/base.html' %} {% load static %} {% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="custom-cursor" data-new-gr-c-s-check-loaded="14.1108.0" data-gr-ext-installed="">
+
+
+
+
+    <div class="page-wrapper">
+
+
+
+        <!-- /.stricky-header -->
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg" style="
+            background-image: url(/static/web/images/backgrounds/page-header-bg.jpg);
+          "></div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li>Blog details</li>
+                    </ul>
+                    <h2>Blog details</h2>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Blog Details Start-->
+        <section class="blog-details">
+            <div class="container">
+                <div class="row">
+                    <div class="">
+                        <div class="blog-details__left">
+                            <div class="blog-details__img">
+                                <img src="{{blog.image.url}}" alt="" />
+                            </div>
+                            <div class="blog-details__content">
+                                <ul class="list-unstyled blog-details__meta">
+                                    <li>
+                                        <a href="#"><i class="far fa-calendar"></i> January 2, 2022</a>
+                                    </li>
+                                    <li><span>||</span></li>
+                                    <li>
+                                        <a href="#"><i class="far fa-user"></i> by Admin</a>
+                                    </li>
+                                </ul>
+                                <h3 class="blog-details__title">{{blog.detials_1}}</h3>
+                                <p class="blog-details__text-1">{{blog.detials_3}}</p>
+                                <p class="blog-details__text-2">{{blog.detials_4}}</p>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--Blog Details End-->
+
+        <!--Site Footer Start-->
+
+        <!--Site Footer End-->
+    </div>
+    <!-- /.page-wrapper -->
+
+
+    <!-- /.mobile-nav__wrapper -->
+
+
+    <!-- /.search-popup -->
+
+
+
+
+    <!-- template js -->
+
+
+
+</body>
+
+
+</html>
+
+{% endblock %}

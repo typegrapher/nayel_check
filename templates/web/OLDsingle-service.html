@@ -1,0 +1,325 @@
+{% extends 'web/base.html' %} {% load static %} {% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    {% comment %} bace {% endcomment %}
+</head>
+
+<body class="custom-cursor">
+
+
+
+    <div class="page-wrapper">
+        {% comment %} header {% endcomment %}
+
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg"
+                style="background-image: url(/static/web/images/backgrounds/page-header-bg.jpg)">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="{% url 'web:index' %}">Home</a></li>
+                        <li><span>/</span></li>
+                        <li><a href="#">Services</a></li>
+                        <li><span>/</span></li>
+                        <li>{{table.name}}</li>
+                    </ul>
+                    <h2>{{table.name}}</h2>
+                </div>
+                <style>
+                    .container .page-header__inner {
+                        text-transform: lowercase;
+                    }
+                </style>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <section class="service-details">
+            <div class="container">
+                <div class="row">
+                    <!-- <div class="col-xl-12 col-lg-7">
+                        <div class="service-details__img">
+                            <img src="{{table.image.url}}" alt="">
+                            <div class="service-details__icon">
+                                <span class="icon-joist"></span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="service-details__left">
+                            <!-- <div class="service-details__category">
+                                <ul class="service-details__category-list list-unstyled">
+
+                                    <li><a href="#">Single play Nayel <span class="fa fa-angle-right"></span></a></li>
+                                   
+
+                                    <li><a href="#">Modified Nayel <span class="fa fa-angle-right"></span></a></li>
+
+                                    <li><a href="built-#">Buil-up Nayel <span class="fa fa-angle-right"></span></a>
+                                    </li>
+
+                                    <li><a href="#">Roof inspection <span class="fa fa-angle-right"></span></a></li>
+
+                                    <li class="active"><a href="#">Roof installation <span
+                                                class="fa fa-angle-right"></span></a></li>
+
+                                    <li><a href="#">Metal Nayel <span class="fa fa-angle-right"></span></a></li>
+
+                                </ul>
+                            </div>  -->
+                            <div class="service-details__need-help">
+                                <div class="service-details__need-help-bg"
+                                    style="background-image: url(/static/web/images/backgrounds/service-details-need-help-bg.jpg)">
+                                </div>
+                                <div class="service-details__need-help-icon">
+                                    <span class="icon-phone-call"></span>
+                                </div>
+                                <h2 class="service-details__need-help-title">Best solution <br> to your house & <br>
+                                    office Nayel</h2>
+                                <div class="service-details__need-help-contact">
+                                    <p>Call Anytime</p>
+                                    <a href="tel:92003680903"> +92 (003) 68-090</a>
+                                </div>
+                            </div>
+                            <div class="service-details__download">
+                                <a href="#ServiceRequest" class="thm-btn service-details__btn"> <i
+                                        class="fa fa-arrow-right"></i> Get a free quote</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="service-details__right">
+                            <div class="service-details__img">
+                                <div class="services-one__img">
+                                    <img src="{{table.image.url}}" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-7">
+                        <div class="service-details__content">
+                            <h3 class="service-details__content-title text-center">{{table.name}}</h3>
+                            <p class="service-details__text-1">{{table.massage_1}}</p>
+                            <p class="service-details__text-2 text-center">{{table.massage_2}}</p>
+                        </div>
+
+
+                    </div>
+
+                    <div class="service-details__benefits">
+                        <div class="row">
+
+                            <div class="col-xl-12">
+                                <div class="service-details__benefits-single">
+                                    <div class="service-details__benefits-content">
+                                        <ul class="list-unstyled service-details__benefits-points">
+                                            <li>
+                                                <div class="icon">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <p>{{table.feature1}}</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <p>{{table.feature2}}</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <p>{{table.feature3}}</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <p>{{table.feature4}}</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <Style>
+                        .service-details__benefits-points .fa-arrow-right {
+                            position: relative;
+                            display: flex;
+                        }
+
+                        @media only screen and (min-width: 0) and (max-width: 767px) {
+                            .service-details__img img {
+
+                                margin-top: 34px;
+                            }
+                        }
+                    </Style>
+                </div>
+            </div>
+        </section>
+        <!--Service Details End-->
+        <!--Team Experience Start-->
+        <section id="ServiceRequest" class="team-experience">
+            <div class="container">
+                <div class="team-experience__top">
+                    <h3 class="team-experience__title">apply service</h3>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <form action="" class="comment-one__form contact-form-validated" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <div class="comment-form__input-box">
+                                        <!-- <label class="input">Name</label> -->
+                                        <input class="input" type="text" placeholder="Your name" name="name">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4">
+                                    <div class="comment-form__input-box">
+                                        <!-- <label class="input">Name</label> -->
+                                        <input class="input" type="text" placeholder="Phone" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4">
+                                    <div class="comment-form__input-box">
+                                        <!-- <label class="input">Name</label> -->
+                                        <input class="input" type="email" placeholder="Email address" name="email">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-5">
+                                    <div class="comment-form__input-box">
+                                        <!-- <label class="input">Name</label> -->
+                                        <input class="input" type="text" placeholder="Service" value="{{table.name}}"
+                                            name="service">
+                                    </div>
+                                </div>
+                                <div class="col-xl-5">
+                                    <div class="comment-form__input-box">
+                                        <!-- <label class="input">Name</label> -->
+                                        <input class="input" type="text" placeholder="Location" name="location">
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-2">
+                                    <div class="comment-form__input-box">
+                                        <button class="locationbutton" onclick="getLocation()">Current Location</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="comment-form__input-box text-message-box">
+                                        <!-- <label class="textarea">Name</label> -->
+                                        <textarea class="textarea" name="message"
+                                            placeholder="Write a message"></textarea>
+                                    </div>
+                                    <div class="comment-form__btn-box">
+                                        <button type="submit" class="thm-btn comment-form__btn"> <i
+                                                class="fa fa-arrow-right"></i> Send a message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <style>
+            .locationbutton {
+                height: 60px;
+                width: 100%;
+                border: none;
+                background-color: var(--nayel-primary);
+                padding-left: 30px;
+                padding-right: 30px;
+                outline: none;
+                font-size: 14px;
+                color: var(--nayel-gray);
+                display: block;
+                border-radius: var(--nayel-bdr-radius);
+                font-weight: 500;
+            }
+        </style>
+
+
+
+        <script>
+            let serviceInputs = document.getElementsByClassName('input');
+            for (let i = 0; i < serviceInputs.length; i++) {
+                serviceInputs[i].addEventListener('input', function () {
+                    if (this.value !== '') {
+                        this.style.color = 'black';
+                    }
+                });
+            }
+        </script>
+
+
+
+        <!--Team Experience End-->
+        <script>
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    console.log("Geolocation is not supported by this browser.");
+                }
+            }
+
+            function showPosition(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                var locationInput = document.getElementsByName("location")[0];
+                locationInput.value = latitude + ", " + longitude;
+            }
+        </script>
+        <!--Site Footer Start-->
+
+        <!--Site Footer End-->
+
+
+    </div><!-- /.page-wrapper -->
+
+
+
+    <!-- /.mobile-nav__wrapper -->
+
+
+    <!-- /.search-popup -->
+
+
+
+
+    {% comment %} base {% endcomment %}
+</body>
+
+</html>
+{% endblock %}

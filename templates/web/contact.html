@@ -1,0 +1,166 @@
+{% extends 'web/base.html' %} {% load static %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    {% comment %} base {% endcomment %}
+</head>
+
+<body class="custom-cursor">
+
+    
+
+
+
+    <div class="page-wrapper">
+
+{% comment %} header {% endcomment %}
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg" style="background-image: url(/static/web/images/backgrounds/page-header-bg.jpg)">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="{% url 'web:index' %}">Home</a></li>
+                        <li><span>/</span></li>
+                        <li>Contact</li>
+                    </ul>
+                    <h2>Contact</h2>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Contact Details Start-->
+        <section class="contact-details">
+            <div class="container">
+                <ul class="list-unstyled contact-details__list">
+                    <li>
+                        <div class="contact-details__icon">
+                            <span class="icon-telephone"></span>
+                        </div>
+                        <div class="contact-details__content">
+                            <h4>
+                                <p>Call</p>
+                                <a href="tel:{{number.number}}" class="contact-details__number-1">{{number.number}}</a>
+                                <!-- <a href="tel:6668888000" class="contact-details__number-2">+ 666 8888 000</a> -->
+                            </h4>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-details__icon">
+                            <span class="icon-email"></span>
+                        </div>
+                        <div class="contact-details__content">
+                            <h4>
+                                <p>Mail</p>
+                                <a href="mailto:info@nayel.in" class="contact-details__number-1">info@nayel.in</a>
+                                <!-- <a href="mailto:info@nayel.in"
+                                    class="contact-details__number-2">info@nayel.in</a> -->
+                            </h4>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-details__icon">
+                            <span class="icon-pin"></span>
+                        </div>
+                        <div class="contact-details__content">
+                            <h4> AL SHARED BLD  <br> Land Area :Naif,   Plot Number : 871-0</h4>
+                        </div>      
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!--Contact Details End-->
+
+        <!--Contact Page Start-->
+        <section class="contact-page">
+            <div class="contact-page-shape-1">
+                <img src="/static/web/images/shapes/contact-page-shape-1.png" alt="">
+            </div>
+            <div class="container">
+                <div class="section-title text-center">
+                    <div class="section-sub-title-box">
+                        <p class="section-sub-title">Contact with us</p>
+                        <div class="section-title-shape-1">
+                            <img src="/static/web/images/shapes/section-title-shape-1.png" alt="">
+                        </div>
+                    </div>
+                    <h2 class="section-title__title">Feel free to write our <br> Nayel experts</h2>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="contact-page__form">
+                            <form method="POST" action="" class="comment-one__form contact-form-validated"
+                                novalidate="novalidate">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <div class="comment-form__input-box">
+                                            <input class="input" type="text" placeholder="Your name" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="comment-form__input-box">
+                                            <input class="input" type="email" placeholder="Email address" name="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="comment-form__input-box text-message-box">
+                                            <textarea class="textarea" name="message" placeholder="Write a message"></textarea>
+                                        </div>
+                                        <div class="comment-form__btn-box">
+                                            <button type="submit" class="thm-btn comment-form__btn"> <i
+                                                    class="fa fa-arrow-right"></i> Send a message</button>
+                                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Contact Page End-->
+
+        <!--Google Map Start-->
+        <section class="google-map google-map-two">
+            <!-- <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd"
+                class="google-map__one" allowfullscreen></iframe> -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.787295324529!2d55.30785091030693!3d25.277739777566076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43cf0168e237%3A0x55183fb8341b17ed!2sNayel%20Professional%20%26%20Management%20Development%20Training!5e0!3m2!1sen!2sin!4v1682484294968!5m2!1sen!2sin" width="600" height="450" style="border:0;" class="google-map__one" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </section>
+        <!--Google Map End-->
+
+        {% comment %} footer {% endcomment %}
+
+
+    </div><!-- /.page-wrapper -->
+
+
+    
+    <!-- /.mobile-nav__wrapper -->
+
+    
+    <!-- /.search-popup -->
+
+   
+
+
+    {% comment %} base {% endcomment %}
+</body>
+
+</html>
+
+    {% endblock %}

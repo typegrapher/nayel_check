@@ -1,0 +1,146 @@
+{% load static %}
+
+<!--=====================================-->
+<!--=        Header Area Start       	=-->
+<!--=====================================-->
+<header class="main-header clearfix">
+    <!-- <div class="main-header__logo">
+        <a href="{% url 'web:index' %}"><img src="/static/web/images/resources/Nayel-Logo-174x166.png" alt=""></a>
+    </div> -->
+    
+    <div class="main-header__top">
+        <div class="main-header__top-inner">
+            <div class="main-header__top-address">
+                <ul class="list-unstyled main-header__top-address-list">
+                    <li>
+                        <i class="icon">
+                            <span class="fa fa-clock"></span>
+                        </i>
+                        <div class="text">
+                            <p>Mon to Sat: 09:00 am to 05:00 pm</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="icon">
+                            <span class="fa fa-envelope"></span>
+                        </i>
+                        <div class="text">
+                            <p><a href="mailto:info@nayel.in">info@nayel.in</a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="main-header__top-right">
+                <div class="main-header__top-menu-box">
+                    <ul class="list-unstyled main-header__top-menu">
+                        <li><a href="{% url 'web:services' %}">Service</a></li>
+                        <li><a href="{% url 'web:contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="main-header__top-social-box">
+                    <div class="main-header__top-social">
+                        <a href="https://www.facebook.com"><i class="fab fa-facebook-square"></i></a>
+                        <!-- <a href="#"><i class="fab fa-twitter"></i></a> -->
+                        <!-- <a href="#"><i class="fab fa-pinterest-p"></i></a> -->
+                        <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="main-menu clearfix">
+        <div class="main-header__logo">
+            <a href="{% url 'web:index' %}"><img src="/static/web/images/resources/Nayel-Logo-174x166.png" alt=""></a>
+        </div>
+        <div class="main-menu__wrapper clearfix">
+            <div class="main-menu__wrapper-inner clearfix">
+                <div class="main-menu__left">
+                    <div class="main-menu__main-menu-box">
+                        
+                        <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                        
+                        <ul class="main-menu__list">
+
+                            {% comment %} <li>
+                                <a href="{% url 'web:index' %}">Home</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'web:about' %}">About</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'web:services' %}">Services</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'web:testimonials' %}">eatimonials </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'web:contact' %}">Contact </a>
+                            </li> {% endcomment %}
+
+                            <li class="">
+                                {% url 'web:index' as index_url %}
+                                <a class="{% if request.path == index_url %}active{% endif %}" href="{{ index_url }}"
+                                    data-page="home" data-single="true">
+                                    <span class="">Home</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                {% url 'web:about' as about_url %}
+                                <a class="{% if request.path == about_url %}active{% endif %}" href="{{ about_url }}"
+                                    data-page="about" data-single="true">
+                                    <span class="">About</span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                {% url 'web:services' as services_url %}
+                                <a class="{% if request.path == services_url %}active{% endif %}"
+                                    href="{{ services_url }}" data-page="about" data-single="true">
+                                    <span class="">Services</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                {% url 'web:blog' as blog_url %}
+                                <a class="{% if request.path == blog_url %}active{% endif %}"
+                                    href="{{ blog_url }}" data-page="about" data-single="true">
+                                    <span class="">Blog</span>
+                                </a>
+                            </li>
+                            <li>
+                                {% url 'web:career' as career_url %}
+                                <a class="{% if request.path == career_url %}active{% endif %}" href="{{ career_url }}"
+                                    data-page="about" data-single="true">
+                                    <span class="">Career</span>
+                                </a>
+
+                            </li>
+
+                            <li>
+                                {% url 'web:contact' as contact_url %}
+                                <a class="{% if request.path == contact_url %}active{% endif %}"
+                                    href="{{ contact_url }}" data-page="about" data-single="true">
+                                    <span class="">Contact</span>
+                                </a>
+
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="main-menu__right">
+
+                    <div class="main-menu__search-box">
+                        <a href="#" class="main-menu__search search-toggler icon-magnifying-glass"></a>
+                    </div>
+                    <div class="main-menu__btn-box">
+                        <a href="{% url 'web:contact' %}" class="thm-btn main-menu__btn"> <i
+                                class="fa fa-arrow-right"></i>
+                            Free estimate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

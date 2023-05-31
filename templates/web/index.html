@@ -1,0 +1,1322 @@
+{% extends 'web/base.html' %} {% load static %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    {% comment %} base {% endcomment %}
+
+</head>
+
+<body class="custom-cursor">
+
+
+
+
+    <div class="page-wrapper">
+
+
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+        <!--desktop baner Start-->
+        <section class="main-slider clearfix desktop_baner">
+            <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+                "effect": "fade",
+                "pagination": {
+                "el": "#main-slider-pagination",
+                "type": "bullets",
+                "clickable": true
+                },
+                "navigation": {
+                "nextEl": "#main-slider__swiper-button-next",
+                "prevEl": "#main-slider__swiper-button-prev"
+                },
+                "autoplay": {
+                "delay": 5000
+                }}'>
+                <div class="swiper-wrapper">
+
+                    {% for i in banner %}
+                    <div class="swiper-slide desktop_baner">
+                        <div class="image-layer" style="background-image: url({{i.image.url}});">
+                        </div>
+                        <!-- /.image-layer -->
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-7 col-lg-8">
+                                    <div class="main-slider__content">
+                                        <p class="main-slider__sub-title">{{i.caption}}</p>
+                                        <h2 class="main-slider__title">{{i.title}}</h2>
+                                        <p class="main-slider__text">{{i.subtitle}}</p>
+                                        <div class="main-slider__btn-box">
+                                            <a href="{% url 'web:about' %}" class="thm-btn main-slider__btn"> <i
+                                                    class="fa fa-arrow-right"></i> about more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                <!-- If we need navigation buttons -->
+                <div class="main-slider__nav">
+                    <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                        <i class="icon-left-arrow"></i>
+                    </div>
+                    <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                        <i class="icon-right-arrow"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!--desktop baner End-->
+        
+
+        <!--mobile baner start-->
+        <section class="main-slider clearfix mobile_banner">
+            <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+                "effect": "fade",
+                "pagination": {
+                "el": "#main-slider-pagination",
+                "type": "bullets",
+                "clickable": true
+                },
+                "navigation": {
+                "nextEl": "#main-slider__swiper-button-next",
+                "prevEl": "#main-slider__swiper-button-prev"
+                },
+                "autoplay": {
+                "delay": 5000
+                }}'>
+                <div class="swiper-wrapper">
+
+
+                    {% for MobileBanner in mobileBanner %}
+                    <div class="swiper-slide">
+                        <div class="image-layer" style="background-image: url({{MobileBanner.image.url}});">
+                        </div>
+                        <!-- /.image-layer -->
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-7 col-lg-8">
+                                    <div class="main-slider__content">
+                                        <p class="main-slider__sub-title">{{MobileBanner.caption}}</p>
+                                        <h2 class="main-slider__title">{{MobileBanner.title}}</h2>
+                                        <p class="main-slider__text">{{MobileBanner.subtitle}}</p>
+                                        <div class="main-slider__btn-box">
+                                            <a href="{% url 'web:career' %}" class="thm-btn main-slider__btn"> <i
+                                                    class="fa fa-arrow-right"></i>Career apply</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+
+                <!-- If we need navigation buttons -->
+                <div class="main-slider__nav">
+                    <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                        <i class="icon-left-arrow"></i>
+                    </div>
+                    <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                        <i class="icon-right-arrow"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!--mobile baner End-->
+
+        <style>
+            /* .mobile_banner,
+                        .desktop_baner {
+                            display: none;
+                        } */
+
+            @media only screen and (min-width: 600px) and (max-width: 2540px) {
+                .desktop_baner {
+                    display: block;
+                }
+
+                .mobile_banner {
+                    display: none;
+                }
+            }
+
+            @media only screen and (min-width: 350px) and (max-width: 600px) {
+                .mobile_banner {
+                    display: block;
+                }
+
+                .desktop_baner {
+                    display: none;
+                }
+            }
+        </style>
+        <!--Feature One Start-->
+        <section class="feature-one">
+            <div class="container">
+                <div class="feature-one__inner">
+                    <div class="feature-one__dot">
+                        <img src="/static/web/images/shapes/feature-one-dot.png" alt="">
+                    </div>
+                    <div class="row">
+                        <!-- Feature One Single Start-->
+                        <!-- <div class="col-xl-3 col-lg-3 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="feature-one__single">
+                                <div class="feature-one__top">
+                                    <div class="feature-one__icon">
+                                        <span class="icon-roof-5"></span>
+                                    </div>
+                                    <div class="feature-one__title-box">
+                                        <h3 class="feature-one__title"><a href="{% url 'web:about' %}">Comprehensive <br>
+                                                Services</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="feature-one__single-inner">
+                                    <p class="feature-one__text">Offers a wide range of services related to heavy equipment, industrial support, maintenance, construction, and more.</p>
+                                    <div class="feature-one__read-more">
+                                        <a href="{% url 'web:about' %}">Read More <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!--Feature One Single End -->
+                        <!--Feature One Single Start-->
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="feature-one__single">
+                                <div class="feature-one__top">
+                                    <div class="feature-one__icon">
+                                        <span class="icon-roof-5"></span>
+                                    </div>
+                                    <div class="feature-one__title-box">
+                                        <h3 class="feature-one__title"><a href="{% url 'web:about' %}">Experienced <br>
+                                                Tech-Crew</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="feature-one__single-inner">
+                                    <p class="feature-one__text">Delivering experienced technical crew services, with
+                                        the help of highly skilled and professional crew members.</p>
+                                    <div class="feature-one__read-more">
+                                        <a href="{% url 'web:about' %}">Read More <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Feature One Single End-->
+                        <!--Feature One Single Start-->
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="feature-one__single">
+                                <div class="feature-one__top">
+                                    <div class="feature-one__icon">
+                                        <span class="icon-construction-worker"></span>
+                                    </div>
+                                    <div class="feature-one__title-box">
+                                        <h3 class="feature-one__title"><a href="#">Customizable <br> Services</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="feature-one__single-inner">
+                                    <p class="feature-one__text">Offers services related to project support, power and
+                                        automation, catering, and more, to meet the...</p>
+                                    <div class="feature-one__read-more">
+                                        <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Feature One Single End-->
+                        <!--Feature One Single Start-->
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="feature-one__single">
+                                <div class="feature-one__top">
+                                    <div class="feature-one__icon">
+                                        <span class="icon-online-registration"></span>
+                                    </div>
+                                    <div class="feature-one__title-box">
+                                        <h3 class="feature-one__title"><a href="{% url 'web:contact' %}">Hospitality
+                                                <br>
+                                                Services</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="feature-one__single-inner">
+                                    <p class="feature-one__text">Transportation and hospitality services, prioritize
+                                        customers and strive to provide a positive experience for clients.</p>
+                                    <div class="feature-one__read-more">
+                                        <a href="{% url 'web:contact' %}">Read More <i
+                                                class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Feature One Single End-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Feature One End-->
+
+        <!--About One Start-->
+        <section class="about-one">
+            <div class="about-one__shape float-bob-x">
+                <img src="/static/web/images/shapes/about-one-shape.png" alt="">
+            </div>
+            {% if home_aboutimg.image %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="about-one__left">
+                            <div class="about-one__img-box wow slideInLeft" data-wow-delay="100ms"
+                                data-wow-duration="2500ms">
+                                <div class="about-one__img">
+
+                                    <img src="{{home_aboutimg.image.url}}" alt="">
+
+                                </div>
+                                <div class="about-one__line">
+                                    <img src="/static/web/images/shapes/about-one-line.png" alt="">
+                                </div>
+                                <div class="about-one__satisfied">
+                                    <div class="about-one__satisfied-inner">
+                                        <div class="about-one__satisfied-shape">
+                                            <img src="/static/web/images/shapes/about-one-satisfied-shape-1.png" alt="">
+                                        </div>
+                                        <div class="about-one__satisfied-content">
+                                            <div class="about-one__satisfied-count-box">
+                                                <h3 class="odometer" data-count="98">00</h3>
+                                                <span class="about-one__satisfied-percent">%</span>
+                                            </div>
+                                            <p class="about-one__satisfied-text">Satisfied customers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="about-one__big-text">_nayel_</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="about-one__right">
+                            <div class="section-title text-left">
+                                <div class="section-sub-title-box">
+                                    <p class="section-sub-title">ABOUT NAYEL SERVICES</p>
+                                    <div class="section-title-shape-1">
+                                        <img src="/static/web/images/shapes/section-title-shape-1.png" alt="">
+                                    </div>
+                                </div>
+                                <h2 class="section-title__title">Extensive Solutions Tailored To Your Needs</h2>
+                            </div>
+                            <p class="about-one__text">Nayel is one of the leading industrial services providers in
+                                Dubai, delivering solutions for diverse needs. We provide a broad range of services that
+                                cover major industrial sectors, enabling us to cater to various fields such as
+                                petrochemicals, oil and gas, fertilizers, steel, cement, water treatment, and power
+                                generation.</p>
+                            <ul class="list-unstyled about-one__points">
+                                <li>
+                                    <div class="icon-box">
+                                        <div class="icon">
+                                            <span class="icon-confirmation"></span>
+                                        </div>
+                                        <div class="text-box">
+                                            <p>Innovative Services</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-box-two">
+                                        <p>Being a top-notch industrial service provider in Dubai, we specialize in
+                                            providing innovative services that leverage the latest technologies and
+                                            industry trends to deliver forward-thinking solutions to our clients.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon-box">
+                                        <div class="icon">
+                                            <span class="icon-confirmation"></span>
+                                        </div>
+                                        <div class="text-box">
+                                            <p>Certified Company</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-box-two">
+                                        <p>Our company is certified, ensuring that our services adhere to or surpass
+                                            industry standards, giving our clients the assurance that they are
+                                            partnering with a trustworthy and dependable provider.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="{% url 'web:services' %}" class="thm-btn about-one__btn"> <i
+                                    class="fa fa-arrow-right"></i>
+                                our services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </section>
+        <!--About One End-->
+
+        <!--Services One Start-->
+        <section class="services-one">
+            <div class="services-one-shape-1 float-bob-x">
+                <img src="/static/web/images/shapes/services-one-shape-1.png" alt="">
+            </div>
+            <div class="services-one-shape-2">
+                <img src="/static/web/images/shapes/services-one-shape-2.png" alt="">
+            </div>
+            <div class="container">
+                <div class="services-one__top">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-6">
+                            <div class="services-one__top-left">
+                                <div class="section-title text-left">
+                                    <div class="section-sub-title-box">
+                                        <p class="section-sub-title">NAYEL SERVICES</p>
+                                        <div class="section-title-shape-1">
+                                            <img src="/static/web/images/shapes/section-title-shape-1.png" alt="">
+                                        </div>
+                                    </div>
+                                    <h2 class="section-title__title">Turnkey Industrial Solutions From Nayel</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-6">
+                            <div class="services-one__top-right">
+                                <p class="services-one__top-right-text">Nayel offers a comprehensive range of services,
+                                    allowing us to provide turnkey solutions for industrial projects. From equipment
+                                    rental and technical support to infrastructure works and hospitality services, we
+                                    can manage and execute projects from start to finish, simplifying complex projects
+                                    and reducing coordination efforts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="services-one__bottom">
+                    <div class="row">
+
+                        {% for table in table|slice:":3" %}
+                        <!--Services One Single Start-->
+                        <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="services-one__single">
+                                <div class="services-one__img">
+                                    <img src="{{table.image.url}}" alt="">
+                                </div>
+                                <div class="services-one__content">
+                                    <div class="services-one__icon">
+                                        <span class="icon-roof"></span>
+                                    </div>
+                                    <h3 class="services-one__title"><a href="#">{{table.name}}</a>
+                                    </h3>
+                                    <p class="services-one__text">{{table.massage}}</p>
+                                    <div class="services-one__read-more">
+                                        <a href="{% url 'web:single_service'  table.id %}">More Service<i
+                                                class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Services One Single End-->
+                        {% endfor %}
+                        {% comment %}
+                        <!--Services One Single Start-->
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="services-one__single">
+                                <div class="services-one__img">
+                                    <img src="/static/web/images/services/services-1-1.jpg" alt="">
+                                </div>
+                                <div class="services-one__content">
+                                    <div class="services-one__icon">
+                                        <span class="icon-roof"></span>
+                                    </div>
+                                    <h3 class="services-one__title"><a href="#">Single play
+                                            Nayel</a></h3>
+                                    <p class="services-one__text">Nulla commodo dolor massa, vel pellen esque nulla
+                                        congue quis.</p>
+                                    <div class="services-one__read-more">
+                                        <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Services One Single End-->
+
+                        <!--Services One Single Start-->
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="services-one__single">
+                                <div class="services-one__img">
+                                    <img src="/static/web/images/services/services-1-2.jpg" alt="">
+                                </div>
+                                <div class="services-one__content">
+                                    <div class="services-one__icon">
+                                        <span class="icon-joist"></span>
+                                    </div>
+                                    <h3 class="services-one__title"><a href="#">Modified Nayel</a>
+                                    </h3>
+                                    <p class="services-one__text">Nulla commodo dolor massa, vel pellen esque nulla
+                                        congue quis.</p>
+                                    <div class="services-one__read-more">
+                                        <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Services One Single End-->
+                        <!--Services One Single Start-->
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="services-one__single">
+                                <div class="services-one__img">
+                                    <img src="/static/web/images/services/services-1-3.jpg" alt="">
+                                </div>
+                                <div class="services-one__content">
+                                    <div class="services-one__icon">
+                                        <span class="icon-roof-1"></span>
+                                    </div>
+                                    <h3 class="services-one__title"><a href="#">Built-up Nayel</a>
+                                    </h3>
+                                    <p class="services-one__text">Nulla commodo dolor massa, vel pellen esque nulla
+                                        congue quis.</p>
+                                    <div class="services-one__read-more">
+                                        <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Services One Single End-->
+                        {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Services One End-->
+
+        <!--Why Choose One Start-->
+        <section class="why-choose-one">
+            <div class="why-choose-one-bg"
+                style="background-image: url(/static/web/images/backgrounds/why-choose-one-bg.jpg);"></div>
+            <div class="why-choose-one-shape-3 float-bob-y-2"></div>
+            <div class="why-choose-one-shape-4 float-bob-x">
+                <img src="/static/web/images/shapes/why-choose-one-shape-4.png" alt="">
+            </div>
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-xl-6">
+                        <div class="why-choose-one__right">
+                            <div class="why-choose-one__img-box">
+                                <div class="why-choose-one__img wow slideInRight" data-wow-delay="100ms"
+                                    data-wow-duration="2500ms">
+                                    <img src="/static/web/images/resources/why-choose-one-img-1.png" alt="">
+                                </div>
+                                <div class="why-choose-one__shape-1"></div>
+                                <div class="why-choose-one__shape-2"></div>
+                                <div class="why-choose-one__author-sign">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="why-choose-one__left">
+                            <div class="section-title text-left">
+                                <div class="section-sub-title-box">
+                                    <p class="section-sub-title">Why choose us</p>
+                                    <div class="section-title-shape-1">
+                                        <img src="/static/web/images/shapes/section-title-shape-1.png" alt="">
+                                    </div>
+                                </div>
+                                <h2 class="section-title__title">Experience Efficiency with Nayel's Integrated Solutions
+                                </h2>
+                            </div>
+                            <p class="why-choose-one__text">Nayel is a top industrial support services provider in
+                                Dubai, known for delivering exceptional results through our experienced team and a broad
+                                range of services. In this section, discover the Nayel advantage and why we are the
+                                preferred partner for industrial support in the region.</p>
+                            <div class="why-choose-one__points-box">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="why-choose-one__points-single">
+                                            <div class="why-choose-one__points-icon">
+                                                <span class="icon-roof-2"></span>
+                                            </div>
+                                            <div class="why-choose-one__points-title-box">
+                                                <h4 class="why-choose-one__points-title">Comprehensive <br> Services
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="why-choose-one__points-single">
+                                            <div class="why-choose-one__points-icon">
+                                                <span class="icon-shield"></span>
+                                            </div>
+                                            <div class="why-choose-one__points-title-box">
+                                                <h4 class="why-choose-one__points-title">Experienced <br>Crew</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="why-choose-one__points-single">
+                                            <div class="why-choose-one__points-icon">
+                                                <span class="icon-mission"></span>
+                                            </div>
+                                            <div class="why-choose-one__points-title-box">
+                                                <h4 class="why-choose-one__points-title">Turnkey <br> Solutions</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="why-choose-one__points-single">
+                                            <div class="why-choose-one__points-icon">
+                                                <span class="icon-construction-worker"></span>
+                                            </div>
+                                            <div class="why-choose-one__points-title-box">
+                                                <h4 class="why-choose-one__points-title">Quality <br> and Safety </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--Why Choose One End-->
+
+        <!--Brand One Start-->
+        <section class="team-one team-two">
+            <div class="">
+                <div class="section-title text-center">
+                    <div class="section-sub-title-box">
+                        <p class="section-sub-title">NAYEL’S CREW</p>
+                        <div class="section-title-shape-1">
+                            <img src="/static/web/images/shapes/section-title-shape-1.png" alt="">
+                        </div>
+                    </div>
+                    <h2 class="section-title__title">Meet our Nayel expert <br> team members</h2>
+                </div>
+                <section class="brand-one">
+                    <div class="brand-one__inner">
+                        <div class="brand-one__shape-1">
+                            <img src="/static/web/images/shapes/brand-one-shape-1.png" alt="">
+                        </div>
+                        <div class="brand-one__shape-2">
+                            <img src="/static/web/images/shapes/brand-one-shape-2.png" alt="">
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="brand-one__carousel thm-owl__carousel owl-theme owl-carousel"
+                                        data-owl-options='{
+                                "margin": 0,
+                                "smartSpeed": 700,
+                                "loop":true,
+                                "autoplay": 6000,
+                                "nav":false,
+                                "dots":false,
+                                "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                                "responsive":{
+                                    "0":{
+                                        "items":1
+                                    },
+                                    "600":{
+                                        "items":2
+                                    },
+                                    "800":{
+                                        "items":3
+                                    },
+                                    "1024":{
+                                        "items": 4
+                                    },
+                                    "1200":{
+                                        "items": 5
+                                    }
+                                }
+                            }'>
+                                        {% for brand_obj in brand %}
+                                        <!-- Brand One Single -->
+                                        <div class="brand-one__single">
+                                            <div class="brand-one__img why-choose-one__author-sign_gedexo">
+                                                <img src="{{ brand_obj.logo.url }}" alt="{{ brand_obj.name }}">
+
+                                                <!-- <p>{{ brand_obj.name }}</p> -->
+
+                                            </div>
+                                        </div>
+                                        <!-- Brand One Single -->
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+        <!--Brand One End-->
+
+        <!--Project One Start-->
+        <section class="project-one">
+            <div class="project-one__top">
+                <div class="container">
+                    <div class="section-title text-center">
+                        <div class="section-sub-title-box">
+                            <p class="section-sub-title">Latest Projects</p>
+                            <div class="section-title-shape-1">
+                                <img src="/static/web/images/shapes/section-title-shape-1.png" alt="">
+                            </div>
+                        </div>
+                        <h2 class="section-title__title">Inspire By Exploring Our <br> Trending Projects</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="project-one__bottom">
+                <div class="project-one__bottom-wrapper">
+                    <div class="project-one__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
+                        "loop": true,
+                        "autoplay": true,
+                        "margin": 30,
+                        "nav": false,
+                        "dots": true,
+                        "smartSpeed": 500,
+                        "autoplayTimeout": 10000,
+                        "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                        "responsive": {
+                            "0": {
+                                "items": 1
+                            },
+                            "768": {
+                                "items": 2
+                            },
+                            "992": {
+                                "items": 3
+                            },
+                            "1200": {
+                                "items": 4
+                            }
+                        }
+                    }'>
+                        <!--Project One Single Start-->
+                        {% for project in project %}
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="{{project.image.url}}" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="{{project.image.url}}"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        {% endfor %}
+                        <!--Project One Single Start-->
+                        {% comment %}
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-2.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-2.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-3.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> Nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-3.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-4.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> Nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-4.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-1.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> Nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-1.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-2.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> Nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-2.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-3.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> Nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-3.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-4.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> Nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-4.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-1.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> Nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-1.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-2.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> Nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-2.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-3.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> Nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-3.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img-box">
+                                    <div class="project-one__img">
+                                        <img src="/static/web/images/project/project-1-4.jpg" alt="">
+                                    </div>
+                                    <div class="project-one__content">
+                                        <h4 class="project-one__title"><a href="#">Modern <br> Nayel
+                                                style</a>
+                                        </h4>
+                                    </div>
+                                    <div class="project-one__link">
+                                        <a class="img-popup" href="/static/web/images/project/project-1-4.jpg"><i
+                                                class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endcomment %}
+                        <!--Project One Single End-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Project One  End-->
+
+        <!--Trust Company Start-->
+        <section class="trust-company">
+            <div class="trust-company-shape-1 float-bob-x">
+                <img src="/static/web/images/shapes/traust-company-shape-1.png" alt="">
+            </div>
+            <div class="trust-company-shape-2"></div>
+            <div class="trust-company-shape-3"></div>
+            <div class="trust-company-shape-4"></div>
+            <div class="trust-company-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
+                style="background-image: url(/static/web/images/backgrounds/trust-company-bg.jpg);"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="trust-company__left">
+                            <div class="trust-company__video-link">
+                                <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
+                                    <div class="trust-company__video-icon">
+                                        <span class="fa fa-play"></span>
+                                        <i class="ripple"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <h2 class="trust-company__title">Trusted Industrial Service Lender In Dubai</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-5">
+                        <div class="trust-company__right">
+                            <ul class="list-unstyled trust-compay__points">
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-tick"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>100% Customer Satisfaction</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-tick"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Quality Services</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-tick"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Experience And Skilled Labourers</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-tick"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p>Transparent Customer Relation</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Trust Company End-->
+
+        <!--Testimonial One Start-->
+        <section class="testimonial-one">
+            <div class="testimonial-one-shape"
+                style="background-image: url(/static/web/images/shapes/testimonial-one-shape.png);"></div>
+            <div class="container">
+                <div class="section-title text-center">
+                    <div class="section-sub-title-box">
+                        <p class="section-sub-title">WHAT CLIENT’S SAY?</p>
+                        <div class="section-title-shape-1">
+                            <img src="/static/web/images/shapes/section-title-shape-1.png" alt="">
+                        </div>
+                    </div>
+                    <h2 class="section-title__title">Client Success <br> Stories</h2>
+                </div>
+                <div class="testimonial-one__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
+                    "loop": true,
+                    "autoplay": true,
+                    "margin": 50,
+                    "nav": false,
+                    "dots": false,
+                    "smartSpeed": 500,
+                    "autoplayTimeout": 10000,
+                    "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                    "responsive": {
+                        "0": {
+                            "items": 1
+                        },
+                        "768": {
+                            "items": 2
+                        },
+                        "992": {
+                            "items": 2
+                        },
+                        "1200": {
+                            "items": 2
+                        }
+                    }
+                }'>
+                    <!--Testimonial One Single Start-->
+                    {% for client in client %}
+                    <div class="item">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__client-info">
+                                <div class="testimonial-one__client-img-box">
+                                    <div class="testimonial-one__client-img">
+                                        <img src="{{client.image.url}}" alt="">
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__client-details">
+                                    <h4 class="testimonial-one__client-name">{{client.name}}</h4>
+                                    <p class="testimonial-one__client-sub-title">{{client.career}}</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-one__text">{{client.stories}}</p>
+                            <div class="testimonial-one__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!--Testimonial One Single End-->
+                    <!--Testimonial One Single Start-->
+                    {% comment %}
+                    <div class="item">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__client-info">
+                                <div class="testimonial-one__client-img-box">
+                                    <div class="testimonial-one__client-img">
+                                        <img src="/static/web/images/testimonial/testimonial-girl.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__client-details">
+                                    <h4 class="testimonial-one__client-name">Albert</h4>
+                                    <p class="testimonial-one__client-sub-title">Civil Engineer</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-one__text">Working with Nayel has been an excellent experience for us.
+                                Their technical support and equipment rental services have been instrumental in our
+                                success. Their team is professional, responsive...</p>
+                            <div class="testimonial-one__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Testimonial One Single End-->
+                    <!--Testimonial One Single Start-->
+                    <div class="item">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__client-info">
+                                <div class="testimonial-one__client-img-box">
+                                    <div class="testimonial-one__client-img">
+                                        <img src="/static/web/images/testimonial/testimonial-boy.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__client-details">
+                                    <h4 class="testimonial-one__client-name">Thomas</h4>
+                                    <p class="testimonial-one__client-sub-title">Entrepreneur</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-one__text">I highly recommend Nayel to anyone looking for industrial
+                                services in Dubai. They have a deep understanding of the industry and a customer-centric
+                                approach that makes them stand out from the rest.</p>
+                            <div class="testimonial-one__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Testimonial One Single End-->
+                    <!--Testimonial One Single Start-->
+                    <div class="item">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__client-info">
+                                <div class="testimonial-one__client-img-box">
+                                    <div class="testimonial-one__client-img">
+                                        <img src="/static/web/images/testimonial/testimonial-girl.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__client-details">
+                                    <h4 class="testimonial-one__client-name">Mike Hardson</h4>
+                                    <p class="testimonial-one__client-sub-title">CEO - Co Founder</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-one__text">Exercitation ullamco laboris nisi ut aliquip ex ea ex
+                                commodo consequat duis aute aboris nisi ut aliquip irure reprehederit in voluptate velit
+                                esse .They have a deep understanding of the industry </p>
+                            <div class="testimonial-one__rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    {% endcomment %}
+                    <!--Testimonial One Single End-->
+                </div>
+            </div>
+        </section>
+        <!--Testimonial One End-->
+
+        <!--Blog One Start-->
+        <section class="blog-one">
+            <div class="container">
+                <div class="section-title text-center">
+                    <div class="section-sub-title-box">
+                        <p class="section-sub-title">News & Updates</p>
+                        <div class="section-title-shape-1">
+                            <img src="/static/web/images/shapes/section-title-shape-1.png" alt="">
+                        </div>
+                    </div>
+                    <h2 class="section-title__title">Stay update with nayel <br> news & articles</h2>
+                </div>
+                <div class="row">
+                    <!--Blog One Single Start-->
+
+                    {% for blog in blog|slice:":3" %}
+                    <!--Blog One Single Start-->
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="blog-one__single">
+                            <div class="blog-one__img">
+                                <img src="{{blog.image.url}}" alt="">
+                            </div>
+                            <div class="blog-one__content">
+                                <div class="blog-one__user">
+                                    <div class="blog-one__user-content">
+                                        <h5>January 2, 2022</h5>
+                                    </div>
+                                </div>
+                                <h3 class="blog-one__title"><a
+                                        href="{% url 'web:singlepage' blog.id %}">{{blog.detials_1}}</a></h3>
+                                <p class="blog-one__text">{{blog.detials_2}}</p>
+                                <div class="blog-one__read-more">
+                                    <a href="{% url 'web:singlepage' blog.id %}">More Blog<i
+                                            class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!--Blog One Single End-->
+
+                    <!--Blog One Single Start-->
+                    {% comment %}
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="blog-one__single">
+                            <div class="blog-one__img">
+                                <img src="/static/web/images/blog/blog-1-2.jpg" alt="">
+                            </div>
+                            <div class="blog-one__content">
+                                <div class="blog-one__user">
+                                    <div class="blog-one__user-content">
+                                        <h5>January 2, 2022</h5>
+                                    </div>
+                                </div>
+                                <h3 class="blog-one__title"><a href="#">Nayel surveys paints
+                                        optimistic outlook</a></h3>
+                                <p class="blog-one__text">Nulla commodo dolor massa, vel pellen esque nulla congue quis.
+                                </p>
+                                <div class="blog-one__read-more">
+                                    <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Blog One Single End-->
+                    <!--Blog One Single Start-->
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="blog-one__single">
+                            <div class="blog-one__img">
+                                <img src="/static/web/images/blog/blog-1-3.jpg" alt="">
+                            </div>
+                            <div class="blog-one__content">
+                                <div class="blog-one__user">
+                                    <div class="blog-one__user-content">
+                                        <h5>January 2, 2022</h5>
+                                    </div>
+                                </div>
+                                <h3 class="blog-one__title"><a href="#">Protect your roof with 4 winter
+                                        mistakes</a></h3>
+                                <p class="blog-one__text">Nulla commodo dolor massa, vel pellen esque nulla congue quis.
+                                </p>
+                                <div class="blog-one__read-more">
+                                    <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endcomment %}
+                    <!--Blog One Single End-->
+                </div>
+            </div>
+        </section>
+        <!--Blog One End-->
+
+        <!--CTA One Start-->
+        <section class="cta-one">
+            <div class="cta-one__img-box">
+                <div class="cta-one__img">
+                    <img src="/static/web/images/resources/cta-one-img-1.jpg" alt="">
+                </div>
+            </div>
+            <div class="container">
+                <div class="cta-one__inner">
+                    <div class="cta-one__left">
+                        <p class="cta-one__sub-title">Quality Nayel provider</p>
+                        <h3 class="cta-one__title">Need Nayel services?</h3>
+                    </div>
+                    <div class="cta-one__btn-box">
+                        <a href="{% url 'web:contact' %}" class="thm-btn cta-one__btn"> <i
+                                class="fa fa-arrow-right"></i> get free
+                            quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--CTA One End-->
+
+
+
+
+    </div><!-- /.page-wrapper -->
+
+
+    <!-- .mobile-nav__wrapper -->
+
+
+    <!-- /.mobile-nav__wrapper -->
+
+
+    <!-- /.search-popup -->
+
+
+
+    {% comment %} base {% endcomment %}
+</body>
+
+</html>
+{% endblock %}
