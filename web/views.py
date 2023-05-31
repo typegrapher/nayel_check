@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import json
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template.loader import render_to_string
+
 
 from web.models import Service
 from web.models import Career
@@ -57,8 +61,6 @@ def services(request):
     return render(request,'web/services.html',context)
 
 
-from django.core.mail import send_mail
-from django.conf import settings
 
 
 def single_service(request,id):
@@ -77,20 +79,21 @@ def single_service(request,id):
         services = ServiceRequest(name=name, email=email, phone=phone, message=message,service=service,location=location,)
         services.save()
 
-
+        email_content = render_to_string('web/email_template.html', {
+            'name': name,
+            'phone': phone,
+            'email': email,
+            'service': service,
+            'location': location,
+            'message': message
+        })
         # Send the email
         send_mail(
-            'New Form Submission',
-            f'''
-            Name: {name}
-            Phone: {phone}
-            Email: {email}
-            Service: {service}
-            Location: {location}
-            Message: {message}
-            ''',
+            'Nayel service request',
+            '',
             settings.DEFAULT_FROM_EMAIL,
             ['kfaamardesubombhack@gmail.com'],
+            html_message=email_content,
             fail_silently=False,
         )
 

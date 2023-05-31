@@ -49,13 +49,13 @@ TINYMCE_FILEBROWSER = True
 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp-relay.sendinblue.com'  # Replace with your SMTP host
-EMAIL_PORT = '587'  # Replace with your SMTP port
-EMAIL_HOST_USER = 'kfaamardesubombhack@gmail.com'  # Replace with your email address
-EMAIL_HOST_PASSWORD = 'otmemyygnzjlgyug'  # Replace with your email password
-DEFAULT_FROM_EMAIL = 'kfaamardesubombhack@gmail.com'  # Replace with your default from email
-EMAIL_USE_TLS = False  # Use TLS encryption for security
-# EMAIL_USE_SSL = True  # Use TLS encryption for security
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'kfaamardesubombhack@gmail.com'
+EMAIL_HOST_PASSWORD = 'ggzzuxirzwivxefi'
+# DEFAULT_FROM_EMAIL = 'kfaamardesubombhack@gmail.com'
+EMAIL_USE_TLS = True
+
 
 
 VERSATILEIMAGEFIELD_SETTINGS = {
