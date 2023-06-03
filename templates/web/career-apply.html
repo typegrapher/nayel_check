@@ -204,34 +204,34 @@
                 <div class="team-experience__top">
                     <h3 class="team-experience__title">apply your form</h3>
                 </div>
-                <form action="" method="POST">
+                <form action="{% url 'web:career_apply' career.id %}#careerApplye" method="POST">
                     {% csrf_token %}
                     <div class="row">
-                        <form action="https://roofsie-html.vercel.app/main-html//static/web/inc/sendemail.php"
-                            class="comment-one__form contact-form-validated" novalidate="novalidate">
+                        <form action="" method="post" >
+                        
                             <div class="row">
                                 <div class="col-xl-4">
                                     <div class="comment-form__input-box">
                                         <!-- <label class="input">Name</label> -->
-                                        <input class="input" type="text" placeholder="Your name" name="name">
+                                        <input class="input" type="text" placeholder="Your name" name="Name">
                                     </div>
                                 </div>
                                 <div class="col-xl-4">
                                     <div class="comment-form__input-box">
                                         <!-- <label class="input">Name</label> -->
-                                        <input class="input" type="text" placeholder="Phone" name="phone">
+                                        <input class="input" type="text" placeholder="Phone" name="Phone">
                                     </div>
                                 </div>
                                 <div class="col-xl-4">
                                     <div class="comment-form__input-box">
                                         <!-- <label class="input">Name</label> -->
-                                        <input class="input" type="email" placeholder="Email address" name="email">
+                                        <input class="input" type="email" placeholder="Email address" name="Email">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xl-6">
-                                    <select id="id_qualification" class="form-select form_select comment-form__input-box" name="qualification"
+                                    <select id="id_qualification" class="form-select form_select comment-form__input-box" name="Qualification"
                                         required>
                                         <option selected disabled>Select Qualification</option>
                                         <option value="plus_two">Plus Two</option>
@@ -240,7 +240,7 @@
                                     </select>
                                 </div>
                                 <div class="col-xl-6">
-                                    <select id="id_career" class="form-select form_select comment-form__input-box" name="career" required>
+                                    <select id="id_career" class="form-select form_select comment-form__input-box" name="Career" required>
                                         <option selected disabled>Select Career</option>
                                         <option value="python_developer">Python Developer</option>
                                         <option value="full_stack_developer">Fulll stack Developer</option>
@@ -253,7 +253,7 @@
                                 <div class="col-xl-12">
                                     <div class="comment-form__input-box text-message-box">
                                         <!-- <label class="textarea">Name</label> -->
-                                        <textarea class="textarea" name="message"
+                                        <textarea class="textarea" name="Message"
                                             placeholder="Write a message"></textarea>
                                     </div>
                                     <div class="comment-form__btn-box">
@@ -268,6 +268,7 @@
             </div>
         </section>
         <!--Team Experience End-->
+<!-- Add the jQuery library to your HTML -->
 
         <!--Site Footer Start-->
         {% comment %} footer {% endcomment %}

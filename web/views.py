@@ -122,26 +122,144 @@ def career(request):
     return render(request,'web/career.html',context)
 
 
-def career_apply(request,id):
-    number=ContactNumber.objects.first()
-    career=Career.objects.get(id=id)
-    context={"career":career,"number":number}
+# def career_apply(request,id):
+#     number=ContactNumber.objects.first()
+#     career=Career.objects.get(id=id)
+#     context={"career":career,"number":number}
     
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        qualification = request.POST.get('qualification')
-        career = request.POST.get('career')
+#     if request.method == 'POST':
+#         name = request.POST.get('Name')
+#         email = request.POST.get('Email')
+#         phone = request.POST.get('Phone')
+#         message = request.POST.get('Message')
+#         qualification = request.POST.get('Qualification')
+#         career = request.POST.get('Career')
 
-        careers = CareerApply(name=name, email=email, phone=phone, message=message,qualification=qualification,career=career,)
-        careers.save()
-        return render(request,"web/career-apply.html",context)
+#         if qualification:  # Check if qualification is not empty
+#             careers = CareerApply(
+#                 name=name,
+#                 email=email,
+#                 phone=phone,
+#                 message=message,
+#                 qualification=qualification,
+#                 career=career,
+#             )
+#             careers.save()
+
+
+#         email_template = render_to_string('web/email_career.html', {
+#             'name': name,
+#             'phone': phone,
+#             'email': email,
+#             'message': message,
+#             'qualification': qualification,
+#             'career': career,
+#         })
+#         # Send the email
+#         send_mail(
+#             'Nayel career apply',
+#             '',
+#             settings.DEFAULT_FROM_EMAIL,
+#             ['kfaamardesubombhack@gmail.com'],
+#             html_message=email_template,
+#             fail_silently=False,
+#         )
+
+#         return render(request,"web/career-apply.html",context)
 
         
-    return render(request,"web/career-apply.html",context)
+#     return render(request,"web/career-apply.html",context)
 
+
+import gspread 
+from google.oauth2 import service_account
+from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2.service_account import Credentials
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
+import os
+
+def career_apply(request, id):
+    number = ContactNumber.objects.first()
+    career = Career.objects.get(id=id)
+    context = {"career": career, "number": number}
+
+    if request.method == 'POST':
+        name = request.POST.get('Name')
+        email = request.POST.get('Email')
+        phone = request.POST.get('Phone')
+        message = request.POST.get('Message')
+        qualification = request.POST.get('Qualification')
+        career = request.POST.get('Career')
+
+        # if qualification:  # Check if qualification is not empty
+        careers = CareerApply(
+            name=name,
+            email=email,
+            phone=phone,
+            message=message,
+            qualification=qualification,
+            career=career,
+        )
+        careers.save()
+
+            # Send data to Google Sheet
+        
+        (name, email, phone, message, qualification, career)
+
+        # Send email
+        send_email(name, email, phone, message, qualification, career)
+
+        return render(request, "web/career-apply.html", context)
+
+    return render(request, "web/career-apply.html", context)
+
+
+def send_to_google_sheet(name, email, phone, message, qualification, career):
+    # Replace 'SHEET_ID' with the actual ID of your Google Sheet
+    # sheet_id = '1t5GtE9cYmwpo8vOaCg9YkV0MmFUo9FNIDsXk95GNYOE'
+    
+    # Define the scope and credentials for Google Sheets API
+    scope = ['https://spreadsheets.google.com/feeds',
+             'https://www.googleapis.com/auth/drive',
+             'https://www.googleapis.com/auth/spreadsheets']
+    
+    # json_keyfile = os.path.join(BASE_DIR, 'static/web/credentials/careerapply-a2e02e23710a.json')
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('/static/web/credentials/django-sendsheet-e71501508a2b.json', scope)
+
+    # Authorize the client and open the Google Sheet
+    client = gspread.authorize(credentials)
+    # sheet = client.open_by_key(sheet_id).sheet1
+    sheet = client.create('sendtosheet').sheet1
+    sheet.share('kfaamardesubombhack@gmail.com', perm_type = 'user' , role = 'writer')
+
+
+    # Prepare the data to be inserted
+    data = [name, email, phone, message, qualification, career]
+
+    # Append the data to the Google Sheet
+    sheet.append_row(data)
+
+
+def send_email(name, email, phone, message, qualification, career):
+    email_template = render_to_string('web/email_career.html', {
+        'name': name,
+        'phone': phone,
+        'email': email,
+        'message': message,
+        'qualification': qualification,
+        'career': career,
+    })
+
+    send_mail(
+        'Nayel career apply',
+        '',
+        settings.DEFAULT_FROM_EMAIL,
+        ['kfaamardesubombhack@gmail.com'],
+        html_message=email_template,
+        fail_silently=False,
+    )
 
 
 

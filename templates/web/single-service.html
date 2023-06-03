@@ -234,7 +234,7 @@
 
                                 <div class="col-xl-2">
                                     <div class="comment-form__input-box">
-                                        <button class="locationbutton" onclick="getLocation()">Current Location</button>
+                                        <button class="locationbutton" id="locationButton">Current Location</button>
                                     </div>
                                 </div>
                             </div>
@@ -257,13 +257,6 @@
                 </form>
 
               
-
-                {% comment %} <script type="text/javascript"
-                    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-                <script type="text/javascript">
-                    emailjs.init('BjvrjswK-Vx-QZcaD')
-                </script> {% endcomment %}
 
 
                
@@ -303,20 +296,27 @@
 
         <!--Team Experience End-->
         <script>
-            function getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                } else {
-                    console.log("Geolocation is not supported by this browser.");
-                }
-            }
+            document.addEventListener('DOMContentLoaded', function() {
+        var locationButton = document.getElementById("locationButton");
+        locationButton.addEventListener('click', getLocation);
 
-            function showPosition(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-                var locationInput = document.getElementsByName("location")[0];
-                locationInput.value = latitude + ", " + longitude;
+        function getLocation(event) {
+            event.preventDefault(); // Prevent page reload
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                console.log("Geolocation is not supported by this browser.");
             }
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var locationInput = document.getElementById("location");
+            locationInput.value = latitude + ", " + longitude;
+        }
+    });
         </script>
         <!--Site Footer Start-->
 
